@@ -19,7 +19,9 @@ public class WebController {
 	
 	@GetMapping({"/", "viewAll"})
 	public String viewAllGames(Model model) {
-		
+		if(repo.findAll().isEmpty()) {
+			return addNewGame(model);
+		}
 		model.addAttribute("games",repo.findAll());
 		return "results";
 	}
@@ -44,6 +46,13 @@ public class WebController {
 	@PostMapping("/edit/{id}")
 	public String reviseGame(VideoGames v, Model model) {
 		repo.save(v);
+		return viewAllGames(model);
+	}
+	
+	@GetMapping("/delete/{id}")
+	public String deleteUser(@PathVariable("id") long id, Model model) {
+		VideoGames v = repo.findById(id).orElse(null);
+		repo.delete(v);
 		return viewAllGames(model);
 	}
 }

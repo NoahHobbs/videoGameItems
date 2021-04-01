@@ -13,7 +13,7 @@
 	<td th:text="${currentGame.price}"/>
 	<td th:text="${currentGame.rating}"/>
 	<td><a href="@{/edit/{id}(id=${currentGame.id})}">Edit</a></td>
-
+	<td><a href="@{/delete/{id}(id=${currentGame.id})}">Delete</a></td>
 	</tr>
 </table>
 </form>
