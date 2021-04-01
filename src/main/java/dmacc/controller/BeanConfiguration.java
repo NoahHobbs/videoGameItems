@@ -9,7 +9,7 @@ import dmacc.beans.VideoGames;
 public class BeanConfiguration {
 	@Bean
 	public VideoGames VideoGames() {
-		VideoGames bean = new VideoGames("Eric Carle");
+		VideoGames bean = new VideoGames("PUBG");
 		bean.setGameName("Fortnite");
 		bean.setYearOfRelease("2016");
 		bean.setPrice(19.99);

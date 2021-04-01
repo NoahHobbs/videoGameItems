@@ -5,6 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
 @Entity
 public class VideoGames {
 	@Id
@@ -15,18 +20,11 @@ public class VideoGames {
 	private double price;
 	private String rating;
 	
-	public VideoGames() {
+	public VideoGames(String gameName) {
 		super();
+		this.gameName = gameName;
 	}
 	
-	public VideoGames(long id, String gameName, String yearOfRelease, double price, String rating) {
-		super();
-		this.id = id;
-		this.gameName = gameName;
-		this.yearOfRelease = yearOfRelease;
-		this.price = price;
-		this.rating = rating;
-	}
 	public VideoGames(String gameName, String yearOfRelease, double price, String rating) {
 		super();
 		this.gameName = gameName;
@@ -35,65 +33,15 @@ public class VideoGames {
 		this.rating = rating;
 	}
 	
+	public VideoGames(String gameName,double price, String rating) {
+		super();
+		this.gameName = gameName;
+		this.price = price;
+		this.rating = rating;
+	}
 	public VideoGames(String gameName, double price) {
 		super();
 		this.gameName = gameName;
 		this.price = price;
 	}
-	
-	public VideoGames(String gamename) {
-		super();
-		this.gameName = gamename;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getGameName() {
-		return gameName;
-	}
-
-	public void setGameName(String gameName) {
-		this.gameName = gameName;
-	}
-
-	public String getYearOfRelease() {
-		return yearOfRelease;
-	}
-
-	public void setYearOfRelease(String yearOfRelease) {
-		this.yearOfRelease = yearOfRelease;
-	}
-
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
-
-	public String getRating() {
-		return rating;
-	}
-
-	public void setRating(String rating) {
-		this.rating = rating;
-	}
-
-	@Override
-	public String toString() {
-		return "VideoGames [id=" + id + ", gameName=" + gameName + ", yearOfRelease=" + yearOfRelease + ", price="
-				+ price + ", rating=" + rating + "]";
-	}
-	
-	
-
-	
-	
 }
