@@ -6,16 +6,18 @@
 <body>
 <form>
 <table>
-<tr th:each="currentGame : ${games}">
-<td th:text="${currentGame.id}"/>
-<td th:text="${currentGame.gameName}"/>
-<td th:text="${currentGame.yearOfRelease}"/>
-<td th:text="${currentGame.price}"/>
-<td th:text="${currentGame.rating}"/>
+	<tr th:each="currentGame : ${games}">
+	<td th:text="${currentGame.id}"/>
+	<td th:text="${currentGame.gameName}"/>
+	<td th:text="${currentGame.yearOfRelease}"/>
+	<td th:text="${currentGame.price}"/>
+	<td th:text="${currentGame.rating}"/>
+	<td><a href="@{/edit/{id}(id=${currentGame.id})}">Edit</a></td>
 
-</tr>
+	</tr>
 </table>
 </form>
 <a href="../inputGame">Add a new game</a>
+
 </body>
 </html>

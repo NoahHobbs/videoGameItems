@@ -4,11 +4,12 @@
 <title>Insert New Game</title>
 </head>
 <body>
-<form th:object="${newGame}" th: action="@{/inputGame}"method='POST'>
-Game Name: <input name="gameName" size="20"> <br />
-Year of Release: <input name="yearOfRelease" size="10"><br />
-Price: <input name="price" size="20"><br />
-Rating: <input name="rating" size="10"><br />
+<form th:object="${newGame}" 
+th:action="@{/update/{id}(id=${newGame.id})}" method='POST'>
+Game Name: <input name="gameName" size="20" th:field="*{gameName}"> <br />
+Year of Release: <input name="yearOfRelease" size="10" th:field="*{yearOfRelease}"><br />
+Price: <input name="price" size="20" th:field="*{price}"><br />
+Rating: <input name="rating" size="10" th:field="*{rating}"><br />
 
 <input name="submit" type="submit" value="submit"/>
 </form>

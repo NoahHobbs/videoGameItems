@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import dmacc.beans.VideoGames;
@@ -31,6 +32,17 @@ public class WebController {
 	}
 	@PostMapping("/inputGame")
 	public String addNewGame(@ModelAttribute VideoGames v, Model model) {
+		repo.save(v);
+		return viewAllGames(model);
+	}
+	@GetMapping("/edit/{id}")
+	public String showUpdateGame(@PathVariable("id") long id, Model model) {
+		VideoGames v = repo.findById(id).orElse(null);
+		model.addAttribute("newGame", v);
+		return "input";
+	}
+	@PostMapping("/edit/{id}")
+	public String reviseGame(VideoGames v, Model model) {
 		repo.save(v);
 		return viewAllGames(model);
 	}
