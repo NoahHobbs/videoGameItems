@@ -8,12 +8,12 @@
 <table>
 	<tr th:each="currentGame : ${videogames}">
 	<td th:text="${currentGame.id}"/>
-	<td th:text="${currentGame.game_name}"/>
-	<td th:text="${currentGame.year_of_release}"/>
+	<td th:text="${currentGame.gameName}"/>
+	<td th:text="${currentGame.yearOfRelease}"/>
 	<td th:text="${currentGame.price}"/>
 	<td th:text="${currentGame.rating}"/>
-	<td><a href="@{/edit/{id}(id=${currentGame.id})}">Edit</a></td>
-	<td><a href="@{/delete/{id}(id=${currentGame.id})}">Delete</a></td>
+	<td><a th:href="@{/edit/{id}(id=${currentGame.id})}">Edit</a></td>
+	<td><a th:href="@{/delete/{id}(id=${currentGame.id})}">Delete</a></td>
 	</tr>
 </table>
 </form>

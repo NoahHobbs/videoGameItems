@@ -22,7 +22,7 @@ public class WebController {
 		if(repo.findAll().isEmpty()) {
 			return addNewGame(model);
 		}
-		model.addAttribute("games",repo.findAll());
+		model.addAttribute("videogames",repo.findAll());
 		return "results";
 	}
 	

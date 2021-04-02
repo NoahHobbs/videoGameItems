@@ -5,7 +5,7 @@
 </head>
 <body>
 <form th:object="${newGame}" 
-th:action="@{/update/{id}(id=${newGame.id})}" method='POST'>
+th:action="@{/edit/{id}(id=${newGame.id})}" method='POST'>
 Game Name: <input name="gameName" size="20" th:field="*{gameName}"> <br />
 Year of Release: <input name="yearOfRelease" size="10" th:field="*{yearOfRelease}"><br />
 Price: <input name="price" size="20" th:field="*{price}"><br />
