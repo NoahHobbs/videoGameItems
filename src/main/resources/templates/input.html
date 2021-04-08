@@ -4,8 +4,7 @@
 <title>Insert New Game</title>
 </head>
 <body>
-<form th:object="${newGame}" 
-th:action="@{/edit/{id}(id=${newGame.id})}" method='POST'>
+<form th:object="${newGame}" th:action="@{/edit/{id}(id=${newGame.id})}" onsubmit="return formValidate(this);" method='POST'>
 Game Name: <input name="gameName" size="20" th:field="*{gameName}"> <br />
 Year of Release: <input name="yearOfRelease" size="10" th:field="*{yearOfRelease}"><br />
 Price: <input name="price" size="20" th:field="*{price}"><br />
@@ -13,6 +12,57 @@ Rating: <input name="rating" size="10" th:field="*{rating}"><br />
 
 <input name="submit" type="submit" value="submit"/>
 </form>
+<script type="text/javascript">
+	function formValidate(form) {
+		
+		if (form.gameName.value == "") {
+			window.alert("Please enter a value in Game Name!");
+			form.gameName.focus();
+			return false;
+		}
+		
+		var yearOnly = /^\d{4}$/;
+		var priceCheck = /^[0-9]+(\.[0-9]{1,2})?$/;
+		var ratingCheck = /^[Tt]|[Ee]|[Mm]$/;
+		
+		  if (form.yearOfRelease.value == "") {
+		   
+		   window.alert("Warning! The yeear of release field is empty!");
+		   form.yearOfRelease.focus();
+		   return false;
+		   
+		  } else if(!yearOnly.test(form.yearOfRelease.value)) {
+		   
+		   window.alert("Warning! Year of release was not entered as a valid year!");
+		   form.yearOfRelease.focus();
+		   return false;
+		  }
+		  
+		  if (form.price.value == "") {
+			  window.alert("The price field must have some value (If game is free enter 0)!");
+			  form.price.focus();
+			  return false;
+			  
+		  } else if (!priceCheck.test(form.price.value)) {
+			  window.alert("Warning! Price must be a number");
+			   form.price.focus();
+			   return false;
+		  }
+		  
+		  if (form.rating.value == "") {
+			  window.alert("Warning! The rating field can not be empty!");
+			  form.rating.focus();
+			  return false;
+			  
+		  } else if (!ratingCheck.test(form.rating.value)) {
+			  window.alert("Warning! The rating should be E, T, or M!");
+			  form.rating.focus();
+			  return false;
+		  }
+		  
+		  
+	}
+</script>
 <a href="viewAll">View all Games</a>
 </body>
 </html>
